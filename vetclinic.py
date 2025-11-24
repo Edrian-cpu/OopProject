@@ -5,9 +5,8 @@ from datetime import date, datetime
 
 DB_FILE = "vet_clinic.db"
 
-# -------------------------
-# DATABASE LAYER (simple helper)
-# -------------------------
+# DATABASE 
+
 class Database:
     def __init__(self, path=DB_FILE):
         self.conn = sqlite3.connect(path)
@@ -99,9 +98,7 @@ class Database:
     def close(self):
         self.conn.close()
 
-# -------------------------
 # UTILS
-# -------------------------
 def calc_age_from_iso(birth_iso):
     if not birth_iso:
         return ""
@@ -119,9 +116,7 @@ def safe_int(val, default=None):
     except Exception:
         return default
 
-# -------------------------
 # GUI / Application
-# -------------------------
 class VetClinicApp:
     def __init__(self, root):
         self.root = root
@@ -657,10 +652,9 @@ class VetClinicApp:
             self.db.close()
             self.root.destroy()
 
-# -------------------------
 # Run application
-# -------------------------
 if __name__ == "__main__":
     root = tk.Tk()
     app = VetClinicApp(root)
     root.mainloop()
+
